@@ -1,0 +1,66 @@
+<header class="w-full h-20 flex items-center justify-between px-6 py-4"
+    [ngClass]="darkModeEnables() ? 'shadow-lg/30' : 'shadow-lg/20'">
+
+    <div class="flex items-center gap-3">
+        <img src="Logo.jpg" alt="El Aguila" class="h-12 w-12 rounded-full object-cover">
+        <div class="flex flex-col">
+            <h1 class="font-semibold text-lg leading-tight">Eduardo Muñoz</h1>
+            <small [ngClass]="darkModeEnables() ?  'text-white' : 'text-black'">By - El Aguila Programa</small>
+        </div>
+    </div>
+
+    <div class="flex items-center gap-5">
+        @if (!isMobile()) {
+        <nav>
+            <ul class="flex gap-6 list-none m-0 p-0">
+                <li class="cursor-pointer hover:text-primary">Inicio</li>
+                <li class="cursor-pointer hover:text-primary">Proyectos</li>
+                <li class="cursor-pointer hover:text-primary">Habilidades</li>
+                <li class="cursor-pointer hover:text-primary">Sobre Mi</li>
+                <li class="cursor-pointer hover:text-primary">Contacto</li>
+            </ul>
+        </nav>
+        }
+
+        <p-button (click)="toogleDarkMode()" size="small" variant="outlined"
+            [icon]="darkModeEnables() ? 'pi pi-lightbulb' : 'pi pi-moon'">
+        </p-button>
+
+        <p-button (click)="togglePopover($event)" size="small" variant="outlined" icon="pi pi-palette"></p-button>
+
+        <p-popover #op>
+            <div class="flex flex-col gap-4">
+                <div>
+                    <span class="font-medium block mb-2">Theme Colors</span>
+                    <ul class="list-none p-0 m-0 flex flex-col">
+                        @for (color of colors; track i; let i = $index) {
+                        <li class="flex items-center gap-2 px-2 py-3 hover:bg-emphasis cursor-pointer rounded-border"
+                            (click)="selectColor(color)">
+                            <div>
+                                <span>{{ color.color }}</span>
+                            </div>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </p-popover>
+
+        @if (isMobile()) {
+        <p-button (onClick)="visible = true" icon="pi pi-bars"></p-button>
+        <p-drawer [(visible)]="visible" position="right" header="Navegación" appendTo="body">
+            <nav class="flex flex-col gap-4 mt-8">
+                <ul class="flex flex-col gap-4 list-none m-0 p-0 text-lg">
+                    <li class="cursor-pointer hover:text-primary">Inicio</li>
+                    <li class="cursor-pointer hover:text-primary">Proyectos</li>
+                    <li class="cursor-pointer hover:text-primary">Habilidades</li>
+                    <li class="cursor-pointer hover:text-primary">Sobre Mi</li>
+                    <li class="cursor-pointer hover:text-primary">Contacto</li>
+                </ul>
+            </nav>
+        </p-drawer>
+        }
+
+    </div>
+
+</header>
