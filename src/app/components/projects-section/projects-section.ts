@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './projects-section.css',
 })
 export class ProjectsSection {
-
+  
 }

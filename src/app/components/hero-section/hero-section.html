@@ -25,8 +25,8 @@
         </p>
 
         <div class="flex flex-wrap gap-4 pt-4" [ngClass]="{'justify-center': isMobile}">
-            <p-button label="Ver Proyectos" size="large" [rounded]="true"></p-button>
-            <p-button label="Descargar CV" size="large" variant="outlined" [rounded]="true"></p-button>
+            <p-button label="Ver Proyectos" size="large" [rounded]="true" (click)="navigateToProjects()"></p-button>
+            <p-button label="Descargar CV" size="large" variant="outlined" [rounded]="true" (click)="downloadCV()"></p-button>
         </div>
     </div>
 

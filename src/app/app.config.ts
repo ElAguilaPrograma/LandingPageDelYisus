@@ -5,7 +5,7 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { Noir, MyPresets } from '../ThemePreset';
+import { Noir, MyPresets, Cyan } from '../ThemePreset';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     providePrimeNG({
       theme: {
-        preset: MyPresets[localStorage.getItem("color-preset") || "Noir"] || Noir,
+        preset: MyPresets[localStorage.getItem("color-preset") || "Cyan"] || Cyan,
         options: {
           darkModeSelector: '.my-app-dark'
         }

@@ -4,6 +4,8 @@ import { NgClass } from '@angular/common';
 import { Popover } from 'primeng/popover';
 import { PopoverModule } from 'primeng/popover';
 import { BreakpointService } from '../../services/breakpoint.service';
+import { PrimeNG } from 'primeng/config';
+import { MyPresets } from '../../../ThemePreset';
 
 import { DrawerModule } from 'primeng/drawer';
 import { RouterLink } from '@angular/router';
@@ -17,8 +19,9 @@ import { RouterLink } from '@angular/router';
 export class Header implements OnInit {
   @ViewChild('op') op!: Popover;
   private breakPointService = inject(BreakpointService);
+  private primeng = inject(PrimeNG);
 
-  selectedColor: string = "Noir"
+  selectedColor: string = "Cyan"
   colors = [
     { color: "Noir" },
     { color: "Emerald" },
@@ -32,7 +35,7 @@ export class Header implements OnInit {
     { color: "Red" },
     { color: "Pink" }
   ]
-  darkMode: boolean = false;
+  darkMode: boolean = true;
   visible: boolean = false;
 
   private readonly storageKey = 'dark-mode';
@@ -43,7 +46,7 @@ export class Header implements OnInit {
   ngOnInit(): void {
     const saved = localStorage.getItem(this.storageKey);
     const colorSaved = localStorage.getItem(this.storageColorPreset);
-    const enabled = saved === 'true';
+    const enabled = saved === null ? true : saved === 'true';
     this.darkMode = enabled;
     const root = document.documentElement;
     if (enabled) {
@@ -62,13 +65,19 @@ export class Header implements OnInit {
 
   selectColor(color: any) {
     this.selectedColor = color.color;
+    const preset = MyPresets[color.color.trim()];
+    if (preset) {
+      this.primeng.theme.set({
+        preset,
+        options: { darkModeSelector: '.my-app-dark' }
+      });
+    }
     try {
-      localStorage.setItem(this.storageColorPreset, color.color);
+      localStorage.setItem(this.storageColorPreset, color.color.trim());
     } catch {
       // valen gorro los errores del storage
     }
     this.op.hide();
-    location.reload();
   }
 
   toogleDarkMode(): void {
