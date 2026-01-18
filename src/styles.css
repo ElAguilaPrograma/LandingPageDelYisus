@@ -4,3 +4,6 @@
 @import "tailwindcss-primeui";
 @import "primeicons/primeicons.css";
 
+/* Sincronizar el modo oscuro de Tailwind con PrimeNG */
+/* Esto hace que Tailwind use la clase .my-app-dark en lugar de prefers-color-scheme */
+@custom-variant dark (&:where(.my-app-dark, .my-app-dark *));

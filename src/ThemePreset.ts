@@ -4,7 +4,6 @@ import Material from '@primeuix/themes/material';
 import Lara from '@primeuix/themes/lara';
 import Nora from '@primeuix/themes/nora';
 
-// Función auxiliar para generar la estructura de colorScheme y primary de forma consistente
 const createColorPreset = (colorName: string) => {
     return definePreset(Aura, {
         semantic: {
@@ -25,16 +24,16 @@ const createColorPreset = (colorName: string) => {
                 light: {
                     surface: {
                         0: '{slate.50}',
-                        50: '{slate.50}',
-                        100: '{slate.100}',
-                        200: '{slate.200}',
-                        300: '{slate.300}',
-                        400: '{slate.400}',
-                        500: '{slate.500}',
-                        600: '{slate.600}',
-                        700: '{slate.700}',
-                        800: '{slate.800}',
-                        900: '{slate.900}',
+                        50: '{slate.100}',
+                        100: '{slate.200}',
+                        200: '{slate.300}',
+                        300: '{slate.400}',
+                        400: '{slate.500}',
+                        500: '{slate.600}',
+                        600: '{slate.700}',
+                        700: '{slate.800}',
+                        800: '{slate.900}',
+                        900: '{slate.950}',
                         950: '{slate.950}'
                     },
                     primary: {
@@ -69,7 +68,6 @@ const createColorPreset = (colorName: string) => {
     });
 };
 
-// Exportación de presets basados en las paletas primitivas de PrimeNG
 export const Emerald = createColorPreset('emerald'); // Color por defecto de Aura
 export const Blue = createColorPreset('blue');
 export const Green = createColorPreset('green');
@@ -81,7 +79,6 @@ export const Orange = createColorPreset('orange');
 export const Red = createColorPreset('red');
 export const Pink = createColorPreset('pink');
 
-// Preset Noir (Especial ya que usa tonos de superficie como primarios)
 export const Noir = definePreset(Aura, {
     semantic: {
         primary: {
@@ -101,16 +98,16 @@ export const Noir = definePreset(Aura, {
             light: {
                 surface: {
                     0: '{slate.50}',
-                    50: '{slate.50}',
-                    100: '{slate.100}',
-                    200: '{slate.200}',
-                    300: '{slate.300}',
-                    400: '{slate.400}',
-                    500: '{slate.500}',
-                    600: '{slate.600}',
-                    700: '{slate.700}',
-                    800: '{slate.800}',
-                    900: '{slate.900}',
+                    50: '{slate.100}',
+                    100: '{slate.200}',
+                    200: '{slate.300}',
+                    300: '{slate.400}',
+                    400: '{slate.500}',
+                    500: '{slate.600}',
+                    600: '{slate.700}',
+                    700: '{slate.800}',
+                    800: '{slate.900}',
+                    900: '{slate.950}',
                     950: '{slate.950}'
                 },
                 primary: {
@@ -135,7 +132,7 @@ export const Noir = definePreset(Aura, {
             },
             dark: {
                 primary: {
-                    color: '{zinc.50}',
+                    color: '{zinc.100}',
                     inverseColor: '{zinc.950}',
                     hoverColor: '{zinc.100}',
                     activeColor: '{zinc.200}'

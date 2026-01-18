@@ -5,27 +5,37 @@
         <img src="Logo.jpg" alt="El Aguila" class="h-12 w-12 rounded-full object-cover">
         <div class="flex flex-col">
             <h1 class="font-semibold text-lg leading-tight">Eduardo Muñoz</h1>
-            <small [ngClass]="darkModeEnables() ?  'text-white' : 'text-black'">El Aguila Programa</small>
+            <small [ngClass]="darkModeEnables() ?  'text-white' : 'text-black'">- El Aguila Programa</small>
         </div>
     </div>
 
     <div [ngClass]="isMobile() ? 'flex items-center' : 'flex items-center gap-5'">
         @if (!isMobile()) {
-            <nav>
-                <ul class="flex gap-6 list-none m-0 p-0">
-                    <li class="cursor-pointer hover:text-primary">Inicio</li>
-                    <li class="cursor-pointer hover:text-primary">Proyectos</li>
-                    <li class="cursor-pointer hover:text-primary">Habilidades</li>
-                    <li class="cursor-pointer hover:text-primary">Sobre Mi</li>
-                    <li class="cursor-pointer hover:text-primary">Contacto</li>
-                </ul>
-            </nav>
+        <nav>
+            <ul class="flex gap-6 list-none m-0 p-0">
+                <li class="cursor-pointer hover:text-primary"><a [routerLink]="['/home']" fragment="hero">Inicio</a>
+                </li>
+                <li class="cursor-pointer hover:text-primary"><a [routerLink]="['/home']"
+                        fragment="projects">Proyectos</a></li>
+                <li class="cursor-pointer hover:text-primary"><a [routerLink]="['/home']"
+                        fragment="habilities">Habilidades</a></li>
+                <li class="cursor-pointer hover:text-primary"><a [routerLink]="['/home']"
+                        fragment="contact">Contacto</a></li>
+            </ul>
+        </nav>
 
-            <p-button (click)="toogleDarkMode()" size="small" variant="outlined"
-                [icon]="darkModeEnables() ? 'pi pi-lightbulb' : 'pi pi-moon'">
-            </p-button>
+        <div class="flex flex-col items-center cursor-pointer -mt-4 active:translate-y-1 transition-all duration-200"
+            (click)="toogleDarkMode()">
+            <div class="w-[2px] h-8 transition-colors duration-300"
+                [ngClass]="darkModeEnables() ? 'bg-slate-600' : 'bg-slate-800'"></div>
+            <div class="w-6 h-3 rounded-t-sm transition-colors duration-300"
+                [ngClass]="darkModeEnables() ? 'bg-slate-600' : 'bg-slate-800'"></div>
+            <div class="w-4 h-4 rounded-full -mt-1 transition-all duration-300"
+                [ngClass]="darkModeEnables() ? 'bg-slate-700/50' : 'bg-yellow-300 shadow-[0_0_15px_2px_rgba(253,224,71,0.6)]'">
+            </div>
+        </div>
 
-            <p-button (click)="togglePopover($event)" size="small" variant="outlined" icon="pi pi-palette"></p-button>
+        <p-button (click)="togglePopover($event)" size="small" variant="outlined" icon="pi pi-palette"></p-button>
         }
 
         <p-popover #op>
@@ -47,28 +57,31 @@
         </p-popover>
 
         @if (isMobile()) {
-            <p-button (onClick)="visible = true" icon="pi pi-bars"></p-button>
-            <p-drawer [(visible)]="visible" position="right" header="Navegación" appendTo="body">
-                <nav class="flex flex-col gap-4 mt-8">
-                    <ul class="flex flex-col gap-4 list-none m-0 p-0 text-lg">
-                        <li class="cursor-pointer hover:text-primary">Inicio</li>
-                        <li class="cursor-pointer hover:text-primary">Proyectos</li>
-                        <li class="cursor-pointer hover:text-primary">Habilidades</li>
-                        <li class="cursor-pointer hover:text-primary">Sobre Mi</li>
-                        <li class="cursor-pointer hover:text-primary">Contacto</li>
-                    </ul>
-                </nav>
+        <p-button (onClick)="visible = true" icon="pi pi-bars"></p-button>
+        <p-drawer [(visible)]="visible" position="right" header="Navegación" appendTo="body">
+            <nav class="flex flex-col gap-4 mt-8">
+                <ul class="flex flex-col gap-4 list-none m-0 p-0 text-lg">
+                    <li class="cursor-pointer hover:text-primary"><a [routerLink]="['/home']" fragment="hero">Inicio</a>
+                    </li>
+                    <li class="cursor-pointer hover:text-primary"><a [routerLink]="['/home']"
+                            fragment="projects">Proyectos</a></li>
+                    <li class="cursor-pointer hover:text-primary"><a [routerLink]="['/home']"
+                            fragment="habilities">Habilidades</a></li>
+                    <li class="cursor-pointer hover:text-primary"><a [routerLink]="['/home']"
+                            fragment="contact">Contacto</a></li>
+                </ul>
+            </nav>
 
-                <div class="flex gap-2 mt-4">
-                    <p-button (click)="toogleDarkMode()" size="small" variant="outlined"
-                        [icon]="darkModeEnables() ? 'pi pi-lightbulb' : 'pi pi-moon'">
-                    </p-button>
+            <div class="flex gap-2 mt-4">
+                <p-button (click)="toogleDarkMode()" size="small" variant="outlined"
+                    [icon]="darkModeEnables() ? 'pi pi-lightbulb' : 'pi pi-moon'">
+                </p-button>
 
-                    <p-button (click)="togglePopover($event)" size="small" variant="outlined"
-                        icon="pi pi-palette"></p-button>
-                </div>
+                <p-button (click)="togglePopover($event)" size="small" variant="outlined"
+                    icon="pi pi-palette"></p-button>
+            </div>
 
-            </p-drawer>
+        </p-drawer>
         }
 
     </div>

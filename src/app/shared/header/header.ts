@@ -6,10 +6,11 @@ import { PopoverModule } from 'primeng/popover';
 import { BreakpointService } from '../../services/breakpoint.service';
 
 import { DrawerModule } from 'primeng/drawer';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [ButtonModule, NgClass, PopoverModule, DrawerModule],
+  imports: [ButtonModule, NgClass, PopoverModule, DrawerModule, RouterLink],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
